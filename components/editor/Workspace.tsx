@@ -2,7 +2,6 @@
 
 import { useCallback, useState } from 'react'
 import { useEditorStore } from '@/lib/store'
-import { validateFile, loadImageFromFile } from '@/lib/image'
 import CanvasPreview from './CanvasPreview'
 
 type Props = {
@@ -31,8 +30,8 @@ export default function Workspace({ onFileDrop }: Props) {
 
   return (
     <main
-      className={`flex-1 flex items-center justify-center overflow-auto bg-[#141414] relative transition-colors ${
-        isDragging ? 'bg-blue-950/30' : ''
+      className={`flex-1 flex items-center justify-center overflow-auto bg-darkroom relative transition-colors ${
+        isDragging ? 'bg-accent/10' : ''
       }`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -40,15 +39,20 @@ export default function Workspace({ onFileDrop }: Props) {
       aria-label="Canvas workspace"
     >
       {isDragging && (
-        <div className="absolute inset-0 border-2 border-blue-500/50 rounded-none pointer-events-none z-10" />
+        <div className="absolute inset-4 border-2 border-dashed border-accent/60 pointer-events-none z-10" />
       )}
 
-      <div className="p-8 flex items-center justify-center min-h-full w-full">
-        <CanvasPreview />
+      <div className="p-10 flex items-center justify-center min-h-full w-full">
+        {/* "Mat" — a print-mount border around the live canvas. Purely
+            decorative chrome; the export target (#snapframe-canvas) lives
+            inside, untouched, so it never appears in exported output. */}
+        <div className="bg-paper-raised p-3 shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
+          <CanvasPreview />
+        </div>
       </div>
 
       {/* Zoom hint */}
-      <div className="absolute bottom-4 right-4 text-xs text-neutral-600 select-none pointer-events-none">
+      <div className="absolute bottom-4 right-4 text-xs uppercase tracking-wider text-darkroom-text/60 select-none pointer-events-none">
         Canvas · {state.canvas.width} × {state.canvas.height}
       </div>
     </main>

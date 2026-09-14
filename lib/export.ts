@@ -1,5 +1,4 @@
 import { EditorState, ExportFormat, ExportScale } from '@/types/editor'
-import { getBackgroundCSS } from './presets'
 
 export async function exportCanvas(
   state: EditorState,

@@ -1,5 +1,12 @@
 'use client'
 
+/* eslint-disable @next/next/no-img-element --
+ * This renderer composes user-uploaded, blob-URL screenshots into the export
+ * mockup that html2canvas rasterizes on export. `next/image` optimization is
+ * moot (images.unoptimized is already set for this static export build) and
+ * its automatic sizing/lazy-loading would risk shifting the pixel-perfect
+ * layout that gets captured, so plain <img> is the correct choice here. */
+
 import { ImageAsset, FrameSettings, ScreenshotSettings } from '@/types/editor'
 
 type Props = {

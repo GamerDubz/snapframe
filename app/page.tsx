@@ -2,7 +2,6 @@
 
 import { useEffect, useCallback } from 'react'
 import { useEditorStore } from '@/lib/store'
-import { validateFile, loadImageFromFile, loadImageFromClipboard } from '@/lib/image'
 import EditorTopbar from '@/components/editor/EditorTopbar'
 import Inspector from '@/components/editor/Inspector'
 import Workspace from '@/components/editor/Workspace'

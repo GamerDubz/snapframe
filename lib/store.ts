@@ -4,8 +4,6 @@ import {
   AspectRatio,
   BackgroundPreset,
   BackgroundType,
-  ExportFormat,
-  ExportScale,
 } from '@/types/editor'
 import { create } from 'zustand'
 

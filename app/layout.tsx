@@ -1,27 +1,34 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Fraunces, Archivo } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const displayFont = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display-raw',
+  axes: ['opsz', 'SOFT', 'WONK'],
+})
+
+const sansFont = Archivo({
+  subsets: ['latin'],
+  variable: '--font-sans-raw',
+})
 
 export const metadata: Metadata = {
-  title: 'SnapFrame — Screenshot & Device Mockup Generator',
+  title: 'Snapframe — Screenshot & Device Mockup Studio',
   description:
     'Turn screenshots into polished product images. Add device frames, beautiful backgrounds, and export at high resolution. Free, private, browser-based.',
   keywords: ['screenshot', 'mockup', 'device frame', 'product image', 'browser tool'],
   openGraph: {
-    title: 'SnapFrame',
-    description: 'Premium screenshot & device mockup generator — free, private, browser-based.',
+    title: 'Snapframe',
+    description: 'A darkroom for your screenshots — free, private, browser-based.',
     type: 'website',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${inter.className} h-full bg-[#0f0f0f] text-neutral-100 antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className={`h-full ${displayFont.variable} ${sansFont.variable}`}>
+      <body className="h-full antialiased">{children}</body>
     </html>
   )
 }
