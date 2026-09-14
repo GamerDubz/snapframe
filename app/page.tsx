@@ -62,7 +62,7 @@ export default function Home() {
             <Workspace onFileDrop={handleFiles} />
           </>
         ) : (
-          <UploadZone onFiles={handleFiles} onSampleLoaded={setImage} />
+          <UploadZone onFiles={handleFiles} />
         )}
       </div>
     </div>
